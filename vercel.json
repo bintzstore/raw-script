@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/home", "destination": "/home.html" },
+    { "source": "/", "destination": "/index.html" },
     { "source": "/api/v1/:name", "destination": "/api/v1/[name]" }
   ],
   "headers": [
@@ -8,7 +8,7 @@
       "source": "/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT" }
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" }
       ]
     }
   ]
