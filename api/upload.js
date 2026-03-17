@@ -48,44 +48,4 @@ export default async function handler(req, res) {
   } catch (err) {
     return res.status(500).json({ error: "Server Error: " + err.message });
   }
-                                }      body: JSON.stringify({
-        message: `Bintz System: Update ${projName}`,
-        content: Buffer.from(code).toString('base64'),
-        sha: sha || undefined
-      })
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      res.status(200).json({ success: true, path: projName });
-    } else {
-      res.status(response.status).json({ error: result.message || "GitHub API Error" });
-    }
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-}      method: 'PUT',
-      headers: {
-        Authorization: `token ${TOKEN}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: `Bintz System: Update ${projName}`,
-        content: Buffer.from(code).toString('base64'),
-        sha: sha || undefined
-      })
-    });
-
-    const result = await uploadRes.json();
-
-    if (uploadRes.ok) {
-      res.status(200).json({ success: true, url: `/api/v1/${projName}` });
-    } else {
-      res.status(500).json({ error: result.message || "Gagal upload ke GitHub" });
-    }
-
-  } catch (err) {
-    res.status(500).json({ error: "Internal Server Error: " + err.message });
-  }
 }
