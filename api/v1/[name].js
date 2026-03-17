@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const { name } = req.query; // Ini adalah namaProyek
-  const GITHUB_RAW = `https://raw.githubusercontent.com/USERNAME/REPO/main/scripts/${name}`;
+  const GITHUB_RAW = `https://raw.githubusercontent.com/bintzstore/raw-script/main/scripts/${name}`;
 
   try {
     const response = await fetch(GITHUB_RAW);
