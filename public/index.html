@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bintz Script Manager V2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { background: #050505; color: #00ffcc; font-family: monospace; padding: 20px; }
+        .box { border: 1px solid #00ffcc; padding: 20px; box-shadow: 0 0 10px #00ffcc; border-radius: 10px; }
+        input, textarea { 
+            width: 100%; background: #111; border: 1px solid #333; 
+            color: #00ffcc; padding: 12px; margin: 8px 0; box-sizing: border-box;
+        }
+        .file-label { 
+            display: block; background: #151515; border: 1px dashed #00ffcc; 
+            padding: 10px; text-align: center; cursor: pointer; margin-bottom: 15px;
+        }
+        button { 
+            background: #00ffcc; color: #000; border: none; padding: 15px; 
+            width: 100%; cursor: pointer; font-weight: bold; margin-top: 10px;
+        }
+        #fileInput { display: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>[ BINTZ_UPLOADER_V2 ]</h3>
+        
+        <label class="file-label" for="fileInput">📁 AMBIL DARI FILE MANAGER</label>
+        <input type="file" id="fileInput" onchange="handleFile(this.files)">
+
+        <label>Nama Proyek (URL):</label>
+        <input type="text" id="projName" placeholder="Contoh: nightbug_v14">
+        
+        <label>Nama File Asli:</label>
+        <input type="text" id="fileName" placeholder="Contoh: script.lua">
+        
+        <label>Isi Script:</label>
+        <textarea id="content" rows="12" placeholder="Isi script akan muncul di sini..."></textarea>
+        
+        <button onclick="upload()">UPLOAD & DAPATKAN RAW</button>
+    </div>
+
+    <script>
+        // Fungsi ambil file dari HP
+        function handleFile(files) {
+            const file = files[0];
+            if (!file) return;
+
+            // Isi nama file otomatis
+            document.getElementById('fileName').value = file.name;
+            // Isi nama proyek otomatis (hapus ekstensi untuk URL)
+            document.getElementById('projName').value = file.name.split('.')[0];
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Isi textarea otomatis
+                document.getElementById('content').value = e.target.result;
+            };
+            reader.readAsText(file);
+        }
+
+        async function upload() {
+            const projName = document.getElementById('projName').value;
+            const fileName = document.getElementById('fileName').value;
+            const code = document.getElementById('content').value;
+
+            if(!projName || !fileName) return alert("Isi semua field!");
+
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                body: JSON.stringify({ projName, fileName, code })
+            });
+
+            if(res.ok) {
+                window.location.href = `/api/v1/${projName}`;
+            } else {
+                alert("Gagal Upload!");
+            }
+        }
+    </script>
+</body>
+          </html>
