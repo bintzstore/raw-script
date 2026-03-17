@@ -2,8 +2,8 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).send();
   
   const { projName, fileName, code } = JSON.parse(req.body);
-  const TOKEN = "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"; 
-  const REPO = "bintzstore/raw-script";
+  const TOKEN = process.env.GITHUB_TOKEN; // Mengambil token dari sistem Vercel (Aman)
+  const REPO = process.env.GITHUB_REPO;   // Mengambil nama repo dari sistem Vercel
 
   // Kita simpan file dengan namaProyek sebagai folder agar mudah diakses api/v1
   const url = `https://api.github.com/repos/${REPO}/contents/scripts/${projName}`;
