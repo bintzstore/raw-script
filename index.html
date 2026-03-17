@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BINTZ | RAW MANAGER</title>
+    <style>
+        body { background: #050505; color: #fff; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .box { background: #0d0d12; border: 1px solid #00ffcc; padding: 25px; border-radius: 10px; width: 100%; max-width: 450px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.2); }
+        h2 { color: #00ffcc; text-align: center; letter-spacing: 2px; margin-top: 0; }
+        
+        .file-btn { display: block; border: 1px dashed #444; padding: 15px; text-align: center; cursor: pointer; margin-bottom: 15px; border-radius: 5px; color: #888; }
+        .file-btn:hover { border-color: #00ffcc; color: #00ffcc; }
+        
+        label { display: block; font-size: 11px; color: #00ffcc; margin: 10px 0 5px; }
+        input, textarea { width: 100%; background: #111; border: 1px solid #222; color: #00ffcc; padding: 12px; border-radius: 5px; box-sizing: border-box; outline: none; }
+        
+        button { width: 100%; background: #00ffcc; color: #000; border: none; padding: 15px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        button:hover { opacity: 0.8; transform: scale(0.98); }
+
+        /* Box Status */
+        #statusBox { display: none; margin-top: 15px; padding: 12px; border-radius: 5px; font-size: 12px; text-align: center; word-break: break-all; border: 1px solid transparent; }
+        .success { background: rgba(0, 255, 204, 0.1); border-color: #00ffcc !important; color: #00ffcc; }
+        .error { background: rgba(255, 68, 68, 0.1); border-color: #ff4444 !important; color: #ff4444; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>[ BINTZ_V14 ]</h2>
+    
+    <div class="file-btn" onclick="document.getElementById('fileInp').click()">📁 PILIH FILE DARI HP</div>
+    <input type="file" id="fileInp" style="display:none" onchange="loadFile(this.files)">
+
+    <label>NAMA PROJECT (LINK URL)</label>
+    <input type="text" id="pName" placeholder="Contoh: nightbug_v4">
+
+    <label>ISI SCRIPT</label>
+    <textarea id="pCode" rows="8" placeholder="Paste script di sini..."></textarea>
+
+    <button id="btn" onclick="upload()">UPLOAD SEKARANG</button>
+
+    <div id="statusBox"></div>
+</div>
+
+<script>
+    function loadFile(files) {
+        const f = files[0]; if(!f) return;
+        document.getElementById('pName').value = f.name;
+        const r = new FileReader();
+        r.onload = (e) => document.getElementById('pCode').value = e.target.result;
+        r.readAsText(f);
+    }
+
+    async function upload() {
+        const sBox = document.getElementById('statusBox');
+        const btn = document.getElementById('btn');
+        const projName = document.getElementById('pName').value;
+        const code = document.getElementById('pCode').value;
+
+        if(!projName || !code) return showMsg("Lengkapi semua kolom!", "error");
+
+        sBox.style.display = "block";
+        sBox.className = "success";
+        sBox.innerHTML = "Processing...";
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ projName, code })
+            });
+
+            const data = await res.json();
+
+            if(res.ok) {
+                showMsg("BERHASIL! Mengalihkan...", "success");
+                setTimeout(() => window.location.href = `/api/v1/${projName}`, 1200);
+            } else {
+                showMsg("GAGAL: " + (data.error || "Cek Logs Vercel"), "error");
+                btn.disabled = false;
+            }
+        } catch (e) {
+            showMsg("KONEKSI ERROR: Gagal menghubungi server", "error");
+            btn.disabled = false;
+        }
+    }
+
+    function showMsg(m, type) {
+        const sBox = document.getElementById('statusBox');
+        sBox.style.display = "block";
+        sBox.className = type;
+        sBox.innerHTML = m;
+    }
+</script>
+
+</body>
+</html>
