@@ -1,0 +1,800 @@
+-- Load data dari file (asumsikan data sudah ada di variabel v1)
+local v1 = {
+	["Easy"] = {
+		["Anggota_Tubuh"] = {
+			"Kepala",
+			"Tangan",
+			"Kaki",
+			"Dada",
+			"Punggung",
+			"Perut",
+			"Bibir",
+			"Gigi"
+		},
+		["Benda"] = {
+			"Meja",
+			"Buku",
+			"Kursi",
+			"Baju",
+			"Topi",
+			"Bola",
+			"Tas",
+			"Jam",
+			"Dasi",
+			"Kaca",
+			"Piring",
+			"Sendok",
+			"Sapu",
+			"Gelas",
+			"Uang",
+			"Kasur",
+			"Sofa",
+			"Lampu"
+		},
+		["Buah"] = {
+			"Ceri",
+			"Jeruk",
+			"Apel",
+			"Pir",
+			"Nanas"
+		},
+		["Elemen"] = {
+			"Api",
+			"Air",
+			"Udara",
+			"Tanah"
+		},
+		["Hewan"] = {
+			"Kucing",
+			"Ayam",
+			"Sapi",
+			"Babi",
+			"Kuda",
+			"Ikan",
+			"Ular",
+			"Katak",
+			"Kodok",
+			"Rusa",
+			"Paus",
+			"Bebek",
+			"Angsa",
+			"Tikus",
+			"Lalat",
+			"Semut",
+			"Singa",
+			"Anjing",
+			"Gajah"
+		},
+		["Kendaraan"] = { "Bus", "Mobil", "Motor" },
+		["Makanan"] = {
+			"Roti",
+			"Nasi",
+			"Sate",
+			"Soto",
+			"Kue"
+		},
+		["Minuman"] = {
+			"Kopi",
+			"Susu",
+			"Jus",
+			"Teh"
+		},
+		["Negara"] = {
+			"Jepang",
+			"Korea",
+			"China",
+			"Indonesia"
+		},
+		["Tempat"] = {
+			"Sekolah",
+			"Pasar",
+			"Mall",
+			"Taman",
+			"Gym"
+		}
+	},
+	["Medium"] = {
+		["Alat_Musik"] = {
+			"Gitar",
+			"Drum",
+			"Bass",
+			"Biola"
+		},
+		["Benda"] = {
+			"Lemari",
+			"Kemeja",
+			"Sepatu",
+			"Payung",
+			"Bantal",
+			"Jendela",
+			"Sendok",
+			"Piring",
+			"Mangkok",
+			"Kacamata",
+			"Handuk",
+			"Gunting",
+			"Kertas",
+			"Pensil",
+			"Spidol",
+			"Celana",
+			"Jaket",
+			"Sarung"
+		},
+		["Benua"] = { "Asia", "Eropa" },
+		["Buah"] = {
+			"Pisang",
+			"Pepaya",
+			"Melon",
+			"Anggur",
+			"Kelapa",
+			"Durian",
+			"Kiwi",
+			"Sawo",
+			"Sawit",
+			"Alpukat",
+			"Mangga"
+		},
+		["Elektronik"] = {
+			"Android",
+			"Kamera",
+			"Laptop",
+			"Kulkas",
+			"Televisi",
+			"Telepon"
+		},
+		["Hewan"] = {
+			"Kambing",
+			"Harimau",
+			"Monyet",
+			"Burung",
+			"Nyamuk",
+			"Kelinci",
+			"Beruang",
+			"Singa",
+			"Buaya"
+		},
+		["Kendaraan"] = { "Perahu", "Sepeda" },
+		["Kota"] = {
+			"Surabaya",
+			"Medan",
+			"Bogor",
+			"Garut",
+			"Solo",
+			"Bekasi",
+			"Padang",
+			"Batam"
+		},
+		["Makanan"] = {
+			"Seblak",
+			"Bakso",
+			"Mie Ayam",
+			"Martabak"
+		},
+		["Minuman"] = { "Boba", "Jamu", "Dawet" },
+		["Penyanyi"] = {
+			"Raisa",
+			"Bernadya",
+			"Tulus",
+			"Mahalini"
+		}
+	},
+	["Hard"] = {
+		["Alat_Musik"] = {
+			"Suling",
+			"Saxofon",
+			"Harmonika",
+			"Pianika"
+		},
+		["Anime"] = { "One Piece", "Naruto" },
+		["Musisi"] = { "Hindia", "Idgitaf" },
+		["Benua"] = { "Antartika", "Australia", "Afrika" },
+		["Game"] = {
+			"Roblox",
+			"Minecraft",
+			"Free Fire",
+			"PUBG",
+			"GTA"
+		},
+		["Kendaraan"] = {
+			"Truk",
+			"Kereta",
+			"Pesawat",
+			"Kapal",
+			"Becak",
+			"Bajaj"
+		},
+		["Kota"] = {
+			"Yogyakarta",
+			"Bandung",
+			"Jakarta",
+			"Tangerang",
+			"Malang",
+			"Tasikmalaya",
+			"Palembang"
+		},
+		["KPOP"] = {
+			"Black Pink",
+			"BTS",
+			"Twice",
+			"EXO"
+		},
+		["Makanan"] = {
+			"Burger",
+			"Sosis",
+			"Ayam Geprek",
+			"Nasi Goreng"
+		},
+		["Minuman"] = {
+			"Es Jeruk",
+			"Es Teh",
+			"Es Campur",
+			"Es Lilin"
+		},
+		["Negara"] = {
+			"Filipina",
+			"Kamboja",
+			"Myanmar",
+			"Laos",
+			"Inggris",
+			"Thailand"
+		},
+		["Provinsi"] = {
+			"Jawa Barat",
+			"Kalimantan",
+			"Sulawesi",
+			"Bali",
+			"Papua"
+		},
+		["Profesi"] = {
+			"Petani",
+			"Guru",
+			"Nelayan",
+			"Pilot"
+		},
+		["Tempat"] = {
+			"Gunung",
+			"Pantai",
+			"Bandara",
+			"Stasiun",
+			"Terminal",
+			"Kampus",
+			"Kantor"
+		},
+		["Tokoh"] = {
+			"Jokowi",
+			"Prabowo",
+			"Bahlil",
+			"Luhut",
+			"Ganjar"
+		},
+		["Penyanyi"] = { "Justin Bieber", "Ed Sheeran", "Taylor Swift" }
+	},
+	["Expert"] = {
+		["Athlete"] = {
+			"Cristiano Ronaldo",
+			"Lionel Messi",
+			"Michael Jordan",
+			"LeBron James"
+		},
+		["Olahraga"] = {
+			"Sepak Bola",
+			"Bulutangkis",
+			"Renang",
+			"Lari",
+			"Basket",
+			"Voli"
+		},
+		["Cartoon"] = { "Spongebob", "Doraemon", "Shinchan" },
+		["Game"] = { "Fortnite", "The Sims", "Super Mario" },
+		["Minuman"] = {
+			"Thai tea",
+			"Matcha",
+			"Soda",
+			"Es Krim"
+		},
+		["Negara"] = {
+			"Qatar",
+			"Palestina",
+			"Rusia",
+			"Italia",
+			"Spanyol",
+			"Vietnam",
+			"Perancis"
+		},
+		["Penyanyi"] = {
+			"Sabrina Carpenter",
+			"Billie Eilish",
+			"Sal Priadi",
+			"Kunto Aji"
+		},
+		["Profesi"] = {
+			"Dokter",
+			"Youtuber",
+			"Polisi",
+			"Tentara",
+			"Koruptor"
+		},
+		["Tiktoker"] = {
+			"Jule",
+			"Willie Salim",
+			"Iben",
+			"Fuji",
+			"Vilmei"
+		},
+		["Kendaraan"] = {
+			"Kapal Selam",
+			"Tank",
+			"Angkot",
+			"Taksi"
+		},
+		["Tokoh"] = {
+			"Sahroni",
+			"Megawati",
+			"Puan Maharani",
+			"Aloy",
+			"Erick Thohir",
+			"Albert Einstein",
+			"Issac Newton"
+		},
+		["Youtuber"] = {
+			"Reza Arap",
+			"Windah Basudara",
+			"Mr Beast",
+			"Raditya Dika",
+			"Atta Halilintar",
+			"Bobon Santoso",
+			"Gadgetin",
+			"Jerome Polin"
+		}
+	},
+	["TTS_OVERRIDES"] = {
+		["Anggur"] = "Ang goor",
+		["Angkot"] = "Ung kot",
+		["Atta Halilintar"] = "A ta Ha lilintar",
+		["Babi"] = "Bah bhi",
+		["Bandung"] = "Bun doong",
+		["Baju"] = "Ba ju",
+		["Bahlil"] = "Bahh lil",
+		["Becak"] = "Baee  cha",
+		["Beruang"] = "Ber Oooo unggg",
+		["Buaya"] = "Boo ayya",
+		["Buku"] = "Boo koo",
+		["Bulutangkis"] = "Bulu tang kis",
+		["Burung"] = "Boo rhuung",
+		["Dawet"] = "Da wet",
+		["Erick Thohir"] = "Eh rick Tho here",
+		["Es Campur"] = "Es cham poor",
+		["Es Jeruk"] = "Es jerook",
+		["Ganjar"] = "Gan jar",
+		["Gigi"] = "Ghi ghi",
+		["GTA"] = "G T A",
+		["Gunung"] = "Gu noong",
+		["Harimau"] = "Ha ri mau",
+		["Idgitaf"] = "Id gi taf",
+		["Ikan"] = "Ikun",
+		["Jerome Polin"] = "Jehh rome Po lin",
+		["Jule"] = "Joo lae",
+		["Kaca"] = "Kacha",
+		["Kacamata"] = "Kacha mata",
+		["Kamboja"] = "Kambozha",
+		["Kampus"] = "Kum poos",
+		["Kantor"] = "Kun tor",
+		["Kapal"] = "Ka pal",
+		["Kapal Selam"] = "Ka pal Selam",
+		["Kemeja"] = "Keh meh zha",
+		["Kertas"] = "Ker tas",
+		["Koruptor"] = "Ko roop tor",
+		["Kue"] = "Ku eh",
+		["Kucing"] = "Koo ching",
+		["Kulkas"] = "Kool kus",
+		["Kunto Aji"] = "Koon to aji",
+		["Luhut"] = "Lu hoot",
+		["Lyodra"] = "leeo dra",
+		["Mie Ayam"] = "mi ayam",
+		["Monyet"] = "Mo nyet",
+		["Nyamuk"] = "Nya mook",
+		["Palembang"] = "Pa lem bung",
+		["Papua"] = "Pa poo a",
+		["Payung"] = "Pha yooong",
+		["Pepaya"] = "Phe pa ya",
+		["Perahu"] = "Peh ra huu",
+		["Pianika"] = "Pia ni ka",
+		["Piring"] = "Pee ring",
+		["Pisang"] = "Pee sung",
+		["PUBG"] = "PUB G",
+		["Punggung"] = "Poong goonk",
+		["Raditya Dika"] = "Ra di teeya Di ka",
+		["Renang"] = "re nang",
+		["Rusia"] = "Roo sia",
+		["Sabrina Carpenter"] = "Sab rina Car penter",
+		["Sarung"] = "sha roong",
+		["Sate"] = "Saa tae",
+		["Sawit"] = "Sha wit",
+		["Sawo"] = "Sha wo",
+		["Saxofon"] = "Shaks so fon",
+		["Sendok"] = "Sen dok",
+		["Sepak Bola"] = "Seh pack Bola",
+		["Shinchan"] = "Shin chan",
+		["Spongebob"] = "Sponge bob",
+		["Stasiun"] = "Sta siun",
+		["Taman"] = "Ta mun",
+		["Tangerang"] = "Tungerrung",
+		["Tasikmalaya"] = "Tasik malaya",
+		["Tikus"] = "Tee koos",
+		["Uang"] = "Oooo unggg",
+		["Ular"] = "Oooo larrr",
+		["Vilmei"] = "Fil may",
+		["Willie Salim"] = "Wi li Sa lim",
+		["Windah Basudara"] = "Win dah ba su da ra",
+		["Yogyakarta"] = "Yogja karta",
+		["Youtuber"] = "you two ber"
+	}
+}
+
+-- Kumpulkan semua kata dari semua kategori
+local allWords = {}
+local categoryWords = {} -- Menyimpan daftar kata per kategori
+
+-- Fungsi untuk mengumpulkan semua kata
+local function collectWords()
+    for difficulty, categories in pairs(v1) do
+        if difficulty ~= "TTS_OVERRIDES" then
+            for category, words in pairs(categories) do
+                if type(words) == "table" then
+                    if not categoryWords[category] then
+                        categoryWords[category] = {}
+                    end
+                    for _, word in ipairs(words) do
+                        table.insert(allWords, word)
+                        table.insert(categoryWords[category], word)
+                    end
+                end
+            end
+        end
+    end
+end
+
+collectWords()
+
+-- GUI Setup
+local gui = Instance.new("ScreenGui")
+gui.Name = "KataKategoriGUI"
+gui.Parent = game:GetService("CoreGui")
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Frame utama (dragable)
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 400, 0, 500)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -250)
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+mainFrame.BackgroundTransparency = 0.05
+mainFrame.BorderSizePixel = 0
+mainFrame.ClipsDescendants = true
+mainFrame.Parent = gui
+
+-- Shadow effect
+local shadow = Instance.new("Frame")
+shadow.Name = "Shadow"
+shadow.Size = UDim2.new(1, 10, 1, 10)
+shadow.Position = UDim2.new(0, -5, 0, -5)
+shadow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+shadow.BackgroundTransparency = 0.7
+shadow.BorderSizePixel = 0
+shadow.Parent = mainFrame
+
+-- Corner for main frame
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 12)
+corner.Parent = mainFrame
+
+-- Title bar (drag area)
+local titleBar = Instance.new("Frame")
+titleBar.Name = "TitleBar"
+titleBar.Size = UDim2.new(1, 0, 0, 40)
+titleBar.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+titleBar.BackgroundTransparency = 0
+titleBar.BorderSizePixel = 0
+titleBar.Parent = mainFrame
+
+local titleCorner = Instance.new("UICorner")
+titleCorner.CornerRadius = UDim.new(0, 12)
+titleCorner.Parent = titleBar
+
+local titleText = Instance.new("TextLabel")
+titleText.Size = UDim2.new(1, -40, 1, 0)
+titleText.Position = UDim2.new(0, 12, 0, 0)
+titleText.BackgroundTransparency = 1
+titleText.Text = "📖  Kata Kategori"
+titleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleText.TextSize = 16
+titleText.Font = Enum.Font.GothamBold
+titleText.TextXAlignment = Enum.TextXAlignment.Left
+titleText.Parent = titleBar
+
+-- Close button
+local closeBtn = Instance.new("TextButton")
+closeBtn.Size = UDim2.new(0, 30, 0, 30)
+closeBtn.Position = UDim2.new(1, -38, 0, 5)
+closeBtn.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+closeBtn.BackgroundTransparency = 0.2
+closeBtn.Text = "✕"
+closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeBtn.TextSize = 18
+closeBtn.Font = Enum.Font.GothamBold
+closeBtn.BorderSizePixel = 0
+closeBtn.Parent = titleBar
+
+local closeCorner = Instance.new("UICorner")
+closeCorner.CornerRadius = UDim.new(0, 6)
+closeCorner.Parent = closeBtn
+
+-- Konten utama
+local contentFrame = Instance.new("Frame")
+contentFrame.Name = "Content"
+contentFrame.Size = UDim2.new(1, -20, 1, -60)
+contentFrame.Position = UDim2.new(0, 10, 0, 50)
+contentFrame.BackgroundTransparency = 1
+contentFrame.Parent = mainFrame
+
+-- Scrolling frame untuk konten
+local scrollingFrame = Instance.new("ScrollingFrame")
+scrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+scrollingFrame.BackgroundTransparency = 1
+scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+scrollingFrame.ScrollBarThickness = 6
+scrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+scrollingFrame.Parent = contentFrame
+
+local uiList = Instance.new("UIListLayout")
+uiList.Padding = UDim.new(0, 10)
+uiList.SortOrder = Enum.SortOrder.LayoutOrder
+uiList.Parent = scrollingFrame
+
+-- Display kata saat ini
+local wordDisplayFrame = Instance.new("Frame")
+wordDisplayFrame.Size = UDim2.new(1, 0, 0, 100)
+wordDisplayFrame.BackgroundColor3 = Color3.fromRGB(55, 55, 70)
+wordDisplayFrame.BorderSizePixel = 0
+wordDisplayFrame.Parent = scrollingFrame
+
+local wordCorner = Instance.new("UICorner")
+wordCorner.CornerRadius = UDim.new(0, 10)
+wordCorner.Parent = wordDisplayFrame
+
+local wordLabel = Instance.new("TextLabel")
+wordLabel.Size = UDim2.new(1, -20, 1, -20)
+wordLabel.Position = UDim2.new(0, 10, 0, 10)
+wordLabel.BackgroundTransparency = 1
+wordLabel.Text = "Kepala"
+wordLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+wordLabel.TextSize = 32
+wordLabel.Font = Enum.Font.GothamBold
+wordLabel.TextWrapped = true
+wordLabel.Parent = wordDisplayFrame
+
+-- Tombol navigasi
+local navFrame = Instance.new("Frame")
+navFrame.Size = UDim2.new(1, 0, 0, 50)
+navFrame.BackgroundTransparency = 1
+navFrame.Parent = scrollingFrame
+
+local prevBtn = Instance.new("TextButton")
+prevBtn.Size = UDim2.new(0, 80, 1, -10)
+prevBtn.Position = UDim2.new(0, 0, 0, 5)
+prevBtn.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
+prevBtn.Text = "◀ Sebelum"
+prevBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+prevBtn.TextSize = 12
+prevBtn.Font = Enum.Font.GothamSemibold
+prevBtn.BorderSizePixel = 0
+prevBtn.Parent = navFrame
+
+local prevCorner = Instance.new("UICorner")
+prevCorner.CornerRadius = UDim.new(0, 8)
+prevCorner.Parent = prevBtn
+
+local nextBtn = Instance.new("TextButton")
+nextBtn.Size = UDim2.new(0, 80, 1, -10)
+nextBtn.Position = UDim2.new(1, -80, 0, 5)
+nextBtn.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
+nextBtn.Text = "Selanjutnya ▶"
+nextBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+nextBtn.TextSize = 12
+nextBtn.Font = Enum.Font.GothamSemibold
+nextBtn.BorderSizePixel = 0
+nextBtn.Parent = navFrame
+
+local nextCorner = Instance.new("UICorner")
+nextCorner.CornerRadius = UDim.new(0, 8)
+nextCorner.Parent = nextBtn
+
+-- Kategori section
+local categoryLabel = Instance.new("TextLabel")
+categoryLabel.Size = UDim2.new(1, 0, 0, 30)
+categoryLabel.BackgroundTransparency = 1
+categoryLabel.Text = "📁  KATEGORI"
+categoryLabel.TextColor3 = Color3.fromRGB(180, 180, 200)
+categoryLabel.TextSize = 14
+categoryLabel.Font = Enum.Font.GothamBold
+categoryLabel.TextXAlignment = Enum.TextXAlignment.Left
+categoryLabel.Parent = scrollingFrame
+
+-- Grid untuk tombol kategori
+local categoryGrid = Instance.new("Frame")
+categoryGrid.Size = UDim2.new(1, 0, 0, 0)
+categoryGrid.BackgroundTransparency = 1
+categoryGrid.AutomaticSize = Enum.AutomaticSize.Y
+categoryGrid.Parent = scrollingFrame
+
+local categoryGridLayout = Instance.new("UIGridLayout")
+categoryGridLayout.CellSize = UDim2.new(0, 110, 0, 40)
+categoryGridLayout.CellPadding = UDim2.new(0, 8, 0, 8)
+categoryGridLayout.FillDirection = Enum.FillDirection.Horizontal
+categoryGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+categoryGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+categoryGridLayout.Parent = categoryGrid
+
+-- Variabel untuk tracking kata saat ini
+local currentIndex = 1
+local currentCategoryList = nil
+local isShowingCategory = false
+
+-- Fungsi untuk update tampilan kata
+local function updateWordDisplay()
+    if isShowingCategory and currentCategoryList then
+        if #currentCategoryList > 0 then
+            wordLabel.Text = currentCategoryList[currentIndex]
+        else
+            wordLabel.Text = "Tidak ada kata"
+        end
+    else
+        if #allWords > 0 then
+            wordLabel.Text = allWords[currentIndex]
+        end
+    end
+end
+
+-- Fungsi untuk menampilkan kata dari kategori tertentu
+local function showCategoryWords(categoryName)
+    if categoryWords[categoryName] then
+        currentCategoryList = categoryWords[categoryName]
+        isShowingCategory = true
+        currentIndex = 1
+        updateWordDisplay()
+        
+        -- Tampilkan notifikasi kecil (opsional)
+        wordDisplayFrame.BackgroundColor3 = Color3.fromRGB(75, 55, 95)
+        task.wait(0.2)
+        wordDisplayFrame.BackgroundColor3 = Color3.fromRGB(55, 55, 70)
+    end
+end
+
+-- Fungsi untuk reset ke semua kata
+local function resetToAllWords()
+    isShowingCategory = false
+    currentCategoryList = nil
+    currentIndex = 1
+    updateWordDisplay()
+end
+
+-- Tombol navigasi
+prevBtn.MouseButton1Click:Connect(function()
+    if isShowingCategory and currentCategoryList then
+        currentIndex = currentIndex - 1
+        if currentIndex < 1 then
+            currentIndex = #currentCategoryList
+        end
+    else
+        currentIndex = currentIndex - 1
+        if currentIndex < 1 then
+            currentIndex = #allWords
+        end
+    end
+    updateWordDisplay()
+end)
+
+nextBtn.MouseButton1Click:Connect(function()
+    if isShowingCategory and currentCategoryList then
+        currentIndex = currentIndex + 1
+        if currentIndex > #currentCategoryList then
+            currentIndex = 1
+        end
+    else
+        currentIndex = currentIndex + 1
+        if currentIndex > #allWords then
+            currentIndex = 1
+        end
+    end
+    updateWordDisplay()
+end)
+
+-- Buat tombol untuk setiap kategori
+local categoryButtons = {}
+for categoryName, words in pairs(categoryWords) do
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(1, 0, 1, 0)
+    btn.BackgroundColor3 = Color3.fromRGB(50, 50, 65)
+    btn.Text = categoryName:gsub("_", " ")
+    btn.TextColor3 = Color3.fromRGB(220, 220, 240)
+    btn.TextSize = 12
+    btn.Font = Enum.Font.GothamSemibold
+    btn.BorderSizePixel = 0
+    btn.AutoButtonColor = false
+    btn.Parent = categoryGrid
+    
+    local btnCorner = Instance.new("UICorner")
+    btnCorner.CornerRadius = UDim.new(0, 8)
+    btnCorner.Parent = btn
+    
+    -- Hover effect
+    btn.MouseEnter:Connect(function()
+        btn.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
+    end)
+    btn.MouseLeave:Connect(function()
+        btn.BackgroundColor3 = Color3.fromRGB(50, 50, 65)
+    end)
+    
+    btn.MouseButton1Click:Connect(function()
+        showCategoryWords(categoryName)
+    end)
+    
+    categoryButtons[categoryName] = btn
+end
+
+-- Tombol reset untuk kembali ke semua kata
+local resetBtn = Instance.new("TextButton")
+resetBtn.Size = UDim2.new(1, 0, 0, 40)
+resetBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 100)
+resetBtn.Text = "🔄 Tampilkan Semua Kata"
+resetBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+resetBtn.TextSize = 12
+resetBtn.Font = Enum.Font.GothamBold
+resetBtn.BorderSizePixel = 0
+resetBtn.Parent = scrollingFrame
+
+local resetCorner = Instance.new("UICorner")
+resetCorner.CornerRadius = UDim.new(0, 8)
+resetCorner.Parent = resetBtn
+
+resetBtn.MouseButton1Click:Connect(function()
+    resetToAllWords()
+end)
+
+-- Close button
+closeBtn.MouseButton1Click:Connect(function()
+    gui:Destroy()
+end)
+
+-- Drag functionality
+local dragging = false
+local dragStart = nil
+local frameStart = nil
+
+titleBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        frameStart = mainFrame.Position
+    end
+end)
+
+titleBar.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = false
+    end
+end)
+
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStart
+        mainFrame.Position = UDim2.new(frameStart.X.Scale, frameStart.X.Offset + delta.X, frameStart.Y.Scale, frameStart.Y.Offset + delta.Y)
+    end
+end)
+
+-- Tampilkan kata pertama
+updateWordDisplay()
+
+print("GUI Kata Kategori berhasil dimuat!")
+print("Total kata: " .. #allWords)
+print("Total kategori: " .. #categoryButtons)
